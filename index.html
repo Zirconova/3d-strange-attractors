@@ -92,6 +92,7 @@
                 updatePosition(pt);
                 let distance = pt.dist(lastPt);
                 ctx.fillStyle = "hsla(" + (180+25*distance) + ", 100%, " + (50 + exposure*5) + "%," + opacity + ")";
+                //console.log("hsla(" + (180+25*distance) + ", 100%, " + (50 + exposure*5) + "%," + opacity + ")");
                 ctx.fillRect(project(cam, pt).x, project(cam, pt).y, 1, 1);
                 lastPt.x = pt.x;
                 lastPt.y = pt.y;
@@ -144,7 +145,7 @@
         });
 
         canvas.addEventListener("mousemove", e => {
-            if (clicking) {
+            if (clicking && running) {
                 clearScreen("black");
                 let dx = e.offsetX - mouseClick.x;
                 let dy = e.offsetY - mouseClick.y;
