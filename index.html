@@ -166,7 +166,7 @@
 
         canvas.addEventListener("wheel", e => {
             clearScreen("black");
-            let multiplier = 1.1 ** (e.deltaY/Math.abs(e.deltaY));
+            let multiplier = (e.deltaY != 0) ? 1.1 ** (e.deltaY/Math.abs(e.deltaY)) : 1;
             cam.width *= multiplier;
             cam.height *= multiplier;
         });
