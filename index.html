@@ -2,10 +2,11 @@
     <head>
         <title>3D Strange Attractors</title>
     </head>
-    <body bgcolor="black">
+    <body style="background-color: black">
         <canvas id="canvas"></canvas>
         <br>
-        <button onclick="running = false">Stop</button>
+        <button onclick="resume()">Resume</button>
+        <button onclick="pause()">Pause</button>
         <button onclick="generateCoeffs(); clearScreen('black');">Random</button>
         <button onclick="hq = !hq; clearScreen('black')">Toggle high quality render</button>
         <br>

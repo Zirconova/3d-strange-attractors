@@ -38,7 +38,14 @@ var mouseClick = new Vector(0,0,0);
 var clicking = false;
 var pt = new Vector(1,1,1);
 var lastPt = new Vector(1,1,1);
-var a = [-1.266804495305259, 2.057240717878118, 0.7456347995345078, -1.2444169439109851, -0.5578445875440847, -1.2468406629894768];
+var a = [
+    -1.266804495305259,
+    2.057240717878118,
+    0.7456347995345078,
+    -1.2444169439109851,
+    -0.5578445875440847,
+    -1.2468406629894768
+];
 var maxIterations = 5000;
 
 window.requestAnimationFrame(draw);
@@ -59,7 +66,19 @@ function draw(timestamp) {
     }
 }
 
+function pause() {
+    running = false;
+}
+
+function resume() {
+    if (!running) {
+        running = true;
+        window.requestAnimationFrame(draw);
+    }
+}
+
 function updatePosition(p) {
+    // 3D Clifford Attractor formula
     let xn = p.x;
     let yn = p.y;
     let zn = p.z;
@@ -132,14 +151,15 @@ canvas.addEventListener("mousemove", e => {
         clearScreen("black");
         let dx = e.offsetX - mouseClick.x;
         let dy = e.offsetY - mouseClick.y;
+        let rate = 0.01;
 
         cam.position.rotY(-cam.yaw);
         cam.position.rotX(-cam.pitch);
 
-        cam.position.rotX(curPitch - dy/100);
-        cam.position.rotY(curYaw - dx/100);
-        cam.yaw = curYaw - dx/100;
-        cam.pitch = curPitch - dy/100;
+        cam.position.rotX(curPitch - dy*rate);
+        cam.position.rotY(curYaw - dx*rate);
+        cam.yaw = curYaw - dx*rate;
+        cam.pitch = curPitch - dy*rate;
     }
 });
 
@@ -148,8 +168,10 @@ canvas.addEventListener("mouseup", e => {
 });
 
 canvas.addEventListener("wheel", e => {
-    clearScreen("black");
-    let multiplier = (e.deltaY != 0) ? 1.1 ** (e.deltaY/Math.abs(e.deltaY)) : 1;
-    cam.width *= multiplier;
-    cam.height *= multiplier;
+    if (running) {
+        clearScreen("black");
+        let multiplier = (e.deltaY != 0) ? 1.1 ** (e.deltaY/Math.abs(e.deltaY)) : 1;
+        cam.width *= multiplier;
+        cam.height *= multiplier;
+    }
 });
