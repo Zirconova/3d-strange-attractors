@@ -4,26 +4,29 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 70%;
+    height: 100%;
 }
 
 #interface-container {
     display: flex;
-    flex-direction: row;
-    width: 55%;
-    height: 60%;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
     justify-content: space-around;
+    align-items: center;
 }
 
 #options {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 35%;
+    width: 100%;
 }
 
 #canvas {
     outline: 4px solid rgb(49, 49, 49);
+    touch-action: none;
+    width: 100%;
 }
 
 button {
@@ -40,4 +43,18 @@ button {
 p {
     color: white;
     font-family: 'Consolas';
+}
+
+/* Desktop and larger screens */
+@media only screen and (min-width: 600px) {
+    #interface-container {
+        width: 55%;
+        flex-direction: row;
+        align-items: start;
+    }
+
+    #options {
+        width: 35%;
+        height: 100%;
+    }
 }
