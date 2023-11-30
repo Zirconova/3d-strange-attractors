@@ -10,7 +10,7 @@
 #interface-container {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 55%;
     height: 60%;
     justify-content: space-around;
 }
@@ -19,6 +19,11 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 35%;
+}
+
+#canvas {
+    outline: 4px solid rgb(49, 49, 49);
 }
 
 button {
@@ -26,4 +31,13 @@ button {
     cursor: pointer;
     height: 10%;
     margin: 0.3rem;
+}
+
+#toggle-running {
+    background-color: rgb(255, 87, 87);
+}
+
+p {
+    color: white;
+    font-family: 'Consolas';
 }

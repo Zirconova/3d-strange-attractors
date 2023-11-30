@@ -8,11 +8,11 @@
                 <canvas id="canvas"></canvas>
                 <div id="options">
                     <button onclick="toggleRunning()" id="toggle-running">Pause</button>
-                    <button onclick="generateCoeffs(); clearScreen('black');">Random</button>
-                    <button onclick="hq = !hq; clearScreen('black')">Toggle high quality render</button>
-                    <p style="color: white; font-family: arial">Overexposure</p>
+                    <button onclick="generateCoeffs(); clearScreen('black');">Randomize</button>
+                    <button onclick="toggleHQ()">Toggle high quality render</button>
+                    <p>Overexposure</p>
                     <input id="exposureSlider" type="range" value="3" min="0" max="10">
-                    <p id="framerate" style="color: white;"></p>
+                    <p id="framerate"></p>
                 </div>
                 
             </div>

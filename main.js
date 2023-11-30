@@ -20,11 +20,8 @@ const height = 600;
 
 canvas.width = width;
 canvas.height = height;
-canvas.style.outline = "1px solid white";
 canvas.style.width = width/1.5 + "px";
 canvas.style.height = height/1.5 + "px";
-
-clearScreen("black");
 
 var hq = false;
 
@@ -49,6 +46,8 @@ var a = [
 ];
 var maxIterations = 5000;
 
+clearScreen("black");
+
 window.requestAnimationFrame(draw);
 
 function draw(timestamp) {
@@ -71,11 +70,19 @@ function toggleRunning() {
     if (running) {
         running = false;
         toggleRunningButton.innerHTML = "Resume";
+        toggleRunningButton.style.backgroundColor = "rgb(57, 219, 57)";
     } else {
         running = true;
         toggleRunningButton.innerHTML = "Pause";
+        toggleRunningButton.style.backgroundColor = "rgb(255, 87, 87)";
         window.requestAnimationFrame(draw);
     }
+}
+
+function toggleHQ() {
+    hq = !hq;
+    if (running)
+        clearScreen('black');
 }
 
 function updatePosition(p) {
