@@ -1,38 +1,40 @@
 #main-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
 }
 
-#interface-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 80%;
-    justify-content: space-around;
-    align-items: center;
-}
-
 #options {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+    /*outline: 1px solid lime;*/
+}
+
+#canvas-container {
+    /*outline: 1px solid white;*/
+    flex: 0 0 auto;
     width: 100%;
 }
 
 #canvas {
-    outline: 4px solid rgb(49, 49, 49);
     touch-action: none;
     width: 100%;
+    height: 100%;
 }
 
 button {
     font-family: 'Consolas';
     cursor: pointer;
+    background-color: lightgray;
+    border: none;
     height: 10%;
+    width: 100%;
     margin: 0.3rem;
 }
 
@@ -47,14 +49,16 @@ p {
 
 /* Desktop and larger screens */
 @media only screen and (min-width: 600px) {
-    #interface-container {
-        width: 55%;
+    #main-container {
         flex-direction: row;
-        align-items: start;
     }
 
     #options {
         width: 35%;
         height: 100%;
+    }
+
+    #canvas-container {
+        width: auto;
     }
 }

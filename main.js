@@ -15,13 +15,13 @@ const toggleRunningButton = document.getElementById("toggle-running");
 const framerateDisplay = document.getElementById("framerate");
 const exposureSlider = document.getElementById("exposureSlider");
 
-const width = 600;
-const height = 600;
+const width = 1000;
+const height = 1000;
 
 canvas.width = width;
 canvas.height = height;
-canvas.style.width = width/1.5 + "px";
-canvas.style.height = height/1.5 + "px";
+// canvas.style.width = width/1.5 + "px";
+// canvas.style.height = height/1.5 + "px";
 
 var hq = false;
 
@@ -45,6 +45,11 @@ var a = [
     -1.2468406629894768
 ];
 var maxIterations = 5000;
+
+var minWidth = window.matchMedia("(min-width: 600px)");
+
+//resizeCanvas(minWidth);
+
 
 clearScreen("black");
 
@@ -141,6 +146,17 @@ function project(cam, pt) {
     return pair;
 }
 
+function resizeCanvas(condition) {
+    if (condition.matches) {
+        canvas.style.height = document.documentElement.offsetHeight;
+        console.log(document.documentElement.offsetHeight);
+        canvas.style.width = canvas.style.height;
+    } else {
+        canvas.style.width = "100%";
+        canvas.style.height = canvas.style.width;
+    }
+}
+
 exposureSlider.oninput = function () {
     exposure = this.value;
 }
@@ -183,3 +199,7 @@ canvas.addEventListener("wheel", e => {
         cam.height *= multiplier;
     }
 });
+
+// window.addEventListener("change", e => {
+//     resizeCanvas(minWidth);
+// });
