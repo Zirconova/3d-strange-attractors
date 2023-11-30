@@ -11,6 +11,7 @@ class Camera {
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const toggleRunningButton = document.getElementById("toggle-running");
 const framerateDisplay = document.getElementById("framerate");
 const exposureSlider = document.getElementById("exposureSlider");
 
@@ -66,13 +67,13 @@ function draw(timestamp) {
     }
 }
 
-function pause() {
-    running = false;
-}
-
-function resume() {
-    if (!running) {
+function toggleRunning() {
+    if (running) {
+        running = false;
+        toggleRunningButton.innerHTML = "Resume";
+    } else {
         running = true;
+        toggleRunningButton.innerHTML = "Pause";
         window.requestAnimationFrame(draw);
     }
 }
