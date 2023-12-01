@@ -20,6 +20,16 @@
     touch-action: none;
 }
 
+#param-sliders {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.param-slider {
+    width: 100%;
+}
+
 button {
     font-family: 'Consolas';
     cursor: pointer;

@@ -14,14 +14,13 @@ const ctx = canvas.getContext("2d");
 const toggleRunningButton = document.getElementById("toggle-running");
 const framerateDisplay = document.getElementById("framerate");
 const exposureSlider = document.getElementById("exposureSlider");
+const paramSliders = [];
 
 const width = 1000;
 const height = 1000;
 
 canvas.width = width;
 canvas.height = height;
-// canvas.style.width = width/1.5 + "px";
-// canvas.style.height = height/1.5 + "px";
 
 var hq = false;
 
@@ -48,8 +47,18 @@ var maxIterations = 5000;
 
 var minWidth = window.matchMedia("(min-width: 600px)");
 
-resizeCanvas(minWidth);
+for (let i = 1; i <= 6; i++) {
+    paramSliders[i-1] = document.getElementById("slider"+i);
+    paramSliders[i-1].value = a[i-1];
+    paramSliders[i-1].oninput = function() {
+        pt = new Vector(1,1,1);
+        lastPt = new Vector(1,1,1);
+        index = Array.prototype.indexOf.call(this.parentNode.children, this);
+        a[index] = Number(this.value);
+    };
+}
 
+resizeCanvas(minWidth);
 
 clearScreen("black");
 
@@ -120,6 +129,7 @@ function generateCoeffs() {
 
     for (let i = 0; i < 6; i++) {
         a[i] = Math.random() * 6 - 3;
+        paramSliders[i].value = "" + a[i];
     }
 
     console.log(a);
