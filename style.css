@@ -56,6 +56,7 @@
 button {
     font-family: 'Consolas';
     cursor: pointer;
+    color: black;
     background-color: rgb(225, 225, 225);
     border: none;
     height: 50%;
@@ -77,6 +78,10 @@ button:hover {
 p {
     color: white;
     font-family: 'Consolas';
+}
+
+#framerate {
+    color: rgb(93, 93, 93);
 }
 
 /* Desktop and larger screens */
