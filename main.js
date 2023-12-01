@@ -48,7 +48,7 @@ var maxIterations = 5000;
 
 var minWidth = window.matchMedia("(min-width: 600px)");
 
-//resizeCanvas(minWidth);
+resizeCanvas(minWidth);
 
 
 clearScreen("black");
@@ -147,13 +147,13 @@ function project(cam, pt) {
 }
 
 function resizeCanvas(condition) {
+    console.log("changed");
     if (condition.matches) {
-        canvas.style.height = document.documentElement.offsetHeight;
-        console.log(document.documentElement.offsetHeight);
-        canvas.style.width = canvas.style.height;
+        canvas.style.height = "100vh";
+        canvas.style.width = "100vh";
     } else {
-        canvas.style.width = "100%";
-        canvas.style.height = canvas.style.width;
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vw";
     }
 }
 
@@ -200,6 +200,6 @@ canvas.addEventListener("wheel", e => {
     }
 });
 
-// window.addEventListener("change", e => {
-//     resizeCanvas(minWidth);
-// });
+window.addEventListener("resize", e => {
+    resizeCanvas(minWidth);
+});

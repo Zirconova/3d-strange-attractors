@@ -16,16 +16,8 @@
     /*outline: 1px solid lime;*/
 }
 
-#canvas-container {
-    /*outline: 1px solid white;*/
-    flex: 0 0 auto;
-    width: 100%;
-}
-
 #canvas {
     touch-action: none;
-    width: 100%;
-    height: 100%;
 }
 
 button {
@@ -56,9 +48,5 @@ p {
     #options {
         width: 35%;
         height: 100%;
-    }
-
-    #canvas-container {
-        width: auto;
     }
 }
