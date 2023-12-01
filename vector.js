@@ -66,3 +66,14 @@ class Vector {
 		this.y = newY;
 	}
 }
+
+class Camera {
+    constructor(x,y,z,yaw,pitch,f,w,h) {
+        this.position = new Vector(x,y,z);
+        this.yaw = yaw;
+        this.pitch = pitch;
+        this.focalLength = f;
+        this.width = w;
+        this.height = h;
+    }
+}
