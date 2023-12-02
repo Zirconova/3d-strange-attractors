@@ -20,7 +20,7 @@ var clicking = false;
 var zoomPoints = [];
 var zooming = false;
 var exposure = 3;
-var maxIterations = 5000;
+var maxIterations = 10000;
 var hq = false;
 var pt = new Vector(1,1,1);
 var lastPt = new Vector(1,1,1);
@@ -75,10 +75,12 @@ function toggleRunning() {
     if (running) {
         running = false;
         toggleRunningButton.innerHTML = "Resume";
+        canvas.style.touchAction = "auto";
         toggleRunningButton.style.backgroundColor = "rgb(57, 219, 57)";
     } else {
         running = true;
         toggleRunningButton.innerHTML = "Pause";
+        canvas.style.touchAction = "none";
         toggleRunningButton.style.backgroundColor = "rgb(255, 87, 87)";
         window.requestAnimationFrame(draw);
     }
@@ -101,14 +103,14 @@ function updatePosition(p) {
 }
 
 function drawAttractor() {
-    let opacity = (hq) ? 0.05 : exposure/10;
+    let opacity = (hq) ? 0.05 : 1;
 
     for (let i = 0; i < maxIterations; i++) {
         updatePosition(pt);
         let distance = pt.dist(lastPt);
+        let screenPt = project(cam, pt);
         ctx.fillStyle = "hsla(" + (180+25*distance) + ", 100%, " + (50 + exposure*5) + "%," + opacity + ")";
-        //console.log("hsla(" + (180+25*distance) + ", 100%, " + (50 + exposure*5) + "%," + opacity + ")");
-        ctx.fillRect(project(cam, pt).x, project(cam, pt).y, 1, 1);
+        ctx.fillRect(screenPt.x, screenPt.y, 1, 1);
         lastPt.x = pt.x;
         lastPt.y = pt.y;
         lastPt.z = pt.z;

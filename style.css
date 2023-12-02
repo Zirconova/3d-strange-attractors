@@ -54,7 +54,8 @@
 }
 
 button {
-    font-family: 'Consolas';
+    font-family: 'Georgia';
+    font-size: 1rem;
     cursor: pointer;
     color: black;
     background-color: rgb(225, 225, 225);
@@ -77,7 +78,8 @@ button:hover {
 
 p {
     color: white;
-    font-family: 'Consolas';
+    font-family: 'Georgia';
+    font-size: 1rem;
 }
 
 #framerate {
